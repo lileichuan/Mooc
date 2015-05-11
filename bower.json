@@ -1,0 +1,7 @@
+{
+  "name": "ios_mooc",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.0.0-rc.5"
+  }
+}

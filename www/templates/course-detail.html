@@ -1,0 +1,34 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+
+  <ion-content >
+    <div class="coourse-detail">
+    <ion-item>
+      <div  class="course-detail-left padding-right">
+         <img  ng-src="{{course.image}}" style="width:590px; height:300px"> 
+      </div>
+    <div class="course-detail-right padding-left">
+       <h2>C++程序语言设计</h2>
+       <p>分  类:计算机 计算机高级素养</p>
+       <p>任课老师：孙丽</p>
+       <p>类  型:选修</p>
+       <p>学  分:5分</p>
+       <p>学  时:10学时</p>
+       <button class="button button-balanced">  开始学习  </button>
+       <button class="button button-balanced button-disabled">开始学习</button>
+       </div>
+  </ion-item>
+  </div>
+
+  <ul class="course-nav">
+    <li class="active" >简介</li>
+    <li >课时</li>
+  </ul>
+  </ion-content>
+
+
+ 
