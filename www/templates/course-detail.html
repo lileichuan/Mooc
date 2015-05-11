@@ -25,10 +25,9 @@
   </div>
 
   <ul class="course-nav">
-    <li class="active" >简介</li>
-    <li >课时</li>
+    <li  ng-class= "{true: 'active', false: 'inactive'}[isActive]" ng-repeat ="item in navItems">{{item.title}}</li>
   </ul>
   </ion-content>
 
-
+      
  
