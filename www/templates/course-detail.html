@@ -6,7 +6,7 @@
 -->
 
   <ion-content >
-    <div class="coourse-detail">
+    <div class="course-detail">
     <ion-item>
       <div  class="course-detail-left padding-right">
          <img  ng-src="{{course.image}}" style="width:590px; height:300px"> 
@@ -18,15 +18,40 @@
        <p>类  型:选修</p>
        <p>学  分:5分</p>
        <p>学  时:10学时</p>
-       <button class="button button-balanced">  开始学习  </button>
-       <button class="button button-balanced button-disabled">开始学习</button>
-       </div>
+       <button class="button button-balanced">开始学习</button>
+       <button class="button button-balanced button-disabled">继续学习</button>
+    </div>
   </ion-item>
   </div>
 
   <ul class="course-nav">
-    <li  ng-class= "{true: 'active', false: 'inactive'}[isActive]" ng-repeat ="item in navItems">{{item.title}}</li>
+    <li  ng-class= "{true: 'active', false: 'inactive'}[index === item.index]" ng-repeat ="item in navItems" ng-click="goPage({{item.index}})">{{item.title}}</li>
   </ul>
+  <div ng-if = "index === 0">我是简介</div>
+  <div class="padding-top" ng-if = "index === 1">
+    <ion-list>
+            <ion-item>
+                 <h2>第一章 平台介绍及获取数据</h2>
+                 <div class="padding-top">
+                    <ion-scroll direction= "x" scrollbar-x ="false">
+                   <button class="button button-balanced">开始学习</button>
+                     <button class="button button-balanced">开始学习</button>
+                      <button class="button button-balanced">开始学习</button>
+                    <button class="button button-balanced">开始学习</button>
+                    <button class="button button-balanced">开始学习</button>
+                    <button class="button button-balanced">开始学习</button>
+                    <button class="button button-balanced">开始学习</button>
+                    <button class="button button-balanced">开始学习</button>
+                    <button class="button button-balanced">开始学习</button>
+                    <button class="button button-balanced">开始学习</button>
+                 </ion-scroll>
+                 </div>
+ 
+            </ion-item> 
+
+       
+   </ion-list>
+  </div>
   </ion-content>
 
       

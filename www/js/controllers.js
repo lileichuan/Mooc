@@ -23,8 +23,12 @@ angular.module('starter.controllers', [])
 })
 .controller('CourseDetailCtrl', function($scope, $stateParams, courses) {
   console.log($stateParams);
-  $scope.isActive = false;
+  $scope.index = 0;
   $scope.course = courses.get($stateParams.courseId);
-  $scope.navItems = [{title:'简介',state:0},{title:'课时',state:1}];
+  $scope.navItems = [{title:'简介',index:0},{title:'课时',index:1}];
+  $scope.navViews = [{title:'简介',index:0},{title:'课时',index:1}];
+  $scope.goPage = function(index){
+     $scope.index = index;
+  }
 })
 
