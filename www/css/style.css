@@ -40,3 +40,9 @@
   border-bottom: 2px solid #23b7e5;
   color: #000;
 }
+
+.lesson-button{
+  padding-left: 20px;
+  width: 200px;
+  height: 64px;
+}

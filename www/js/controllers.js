@@ -21,14 +21,16 @@ angular.module('starter.controllers', [])
     Courses.remove(chat);
   }
 })
-.controller('CourseDetailCtrl', function($scope, $stateParams, courses) {
-  console.log($stateParams);
-  $scope.index = 0;
+.controller('CourseDetailCtrl', function($scope, $stateParams, courses,chapters) {
+  $scope.index = 1;
   $scope.course = courses.get($stateParams.courseId);
+  $scope.chapters = chapters.all();
   $scope.navItems = [{title:'简介',index:0},{title:'课时',index:1}];
   $scope.navViews = [{title:'简介',index:0},{title:'课时',index:1}];
   $scope.goPage = function(index){
      $scope.index = index;
   }
+})
+.controller('LessonCtrl', function($scope, $stateParams, courses,chapters) {
 })
 

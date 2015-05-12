@@ -9,7 +9,7 @@
     collection-item-height="getItemHeight(course, $index)"
     ng-style="{height: getItemHeight(course, $index)}">
    <a class="item item-thumbnail-top my-course-item"
-    href="#/courses/{{course.id}}">
+    ng-href="#/courses/{{course.id}}">
       <img ng-src="{{course.image}}">
       <h2>{{course.name}}</h2>
       <p>{{course.studynum}}</p>

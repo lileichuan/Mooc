@@ -30,12 +30,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: "templates/courses.html",
     controller: 'CoursesCtrl'
   })
-    .state('course-detail', {
+  .state('course-detail', {
       url: '/courses/:courseId',
       templateUrl: 'templates/course-detail.html',
       controller: 'CourseDetailCtrl'
     })
-
+    .state('lesson', {
+      url: '/lesson/:lessonId',
+      templateUrl: 'templates/lesson.html',
+      controller: 'LessonCtrl'
+    })
   // Each tab has its own nav history stack:
   // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/courses');

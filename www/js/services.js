@@ -47,7 +47,6 @@ services.factory('courses', function() {
       courses.splice(courses.indexOf(course), 1);
     },
     get: function(courseId) {
-      console.log(courseId);
       for (var i = 0; i < courses.length; i++) {
         if (courses[i].id === parseInt(courseId)) {
           return courses[i];
@@ -57,6 +56,44 @@ services.factory('courses', function() {
     }
   };
 });
+
+
+services.factory('chapters', function() {
+  // Might use a resource here that returns a JSON array
+  // Some fake testing data
+  var chapters = [{
+    id: 0,
+    name: '计算机基础教程',
+    lessons:[{
+      id:0,
+      name:'初中生物分支测验'},{
+      id:1,  
+      name:'生态系统分支测验'}]
+  },{
+    id: 1,
+    name: '计算机基础教程',
+    lessons:[{
+      id:0,
+      name:'初中生物分支测验'},{
+      id:1,  
+      name:'生态系统分支测验'}]
+  },{
+    id: 2,
+    name: '计算机基础教程',
+    lessons:[{
+       id:0,
+      name:'初中生物分支测验'},{
+      id:1,  
+      name:'生态系统分支测验'}]
+  }];
+  return {
+    all: function() {
+      return chapters;
+    }
+  };
+});
+
+
 
 services.service('moocService', function($http, $q){
   var baseUrl = 'http://42.62.16.168:88/api?method=clientActive&client_type=1&client_renew_type=1&udid=OpenUDIDcom.founder.Class_9363f9ec20c0f440691cfd09b4ec7da776624c5a';
