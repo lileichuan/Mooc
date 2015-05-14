@@ -4,12 +4,29 @@ Each tab's child <ion-nav-view> directive will have its own
 navigation history that also transitions its views in and out.
 -->
 
+<ion-view view-title="我的课时">
+</ion-view>
+<ion-tabs class="tabs-icon-top tabs-color-active-positive">
 
- <ion-modal-view>
-    <ion-header-bar>
-      <h1 class="title">My Modal title</h1>
-    </ion-header-bar>
-    <ion-content>
-      Hello!
-    </ion-content>
- </ion-modal-view>
+  <ion-tab title="概述" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" >
+  <ion-view>
+
+
+   <ion-content scroll="true" overflow-scroll="true"  class="padding iframe-wrapper">
+    <outline class=""></outline>
+</ion-content>
+</ion-view>
+
+
+
+  </ion-tab>
+ 
+  <ion-tab title="测验" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" >
+    <ion-nav-view name="tab-chats"></ion-nav-view>
+  </ion-tab>
+
+
+  <ion-tab title="作业" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear">
+    <ion-nav-view name="tab-account"></ion-nav-view>
+  </ion-tab>
+</ion-tabs>

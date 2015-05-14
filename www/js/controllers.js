@@ -21,14 +21,8 @@ angular.module('starter.controllers', [])
     Courses.remove(chat);
   }
 })
-.controller('CourseDetailCtrl', function($scope, $stateParams, courses,chapters,$ionicModal) {
-  $ionicModal.fromTemplateUrl("tabs.html", {
-    scope: $scope,
-    animation: "slide-in-up"
-  }).then(function(modal) {
-    alert('fffff');
-    $scope.modal = modal;
-  });
+.controller('CourseDetailCtrl', function($scope, $stateParams, courses,chapters) {
+
   $scope.index = 1;
   $scope.course = courses.get($stateParams.courseId);
   $scope.chapters = chapters.all();
@@ -37,25 +31,7 @@ angular.module('starter.controllers', [])
   $scope.goPage = function(index){
      $scope.index = index;
   }
-  $scope.openModel = function() {
-    alert($scope.modal);
-    $scope.modal.show();
-  };
-  $scope.closeModal = function() {
-    $scope.modal.hide();
-  };
-  //Cleanup the modal when we're done with it!
-  $scope.$on('$destroy', function() {
-    $scope.modal.remove();
-  });
-  // Execute action on hide modal
-  $scope.$on('modal.hidden', function() {
-    // Execute action
-  });
-  // Execute action on remove modal
-  $scope.$on('modal.removed', function() {
-    // Execute action
-  });
+
 
 })
 .controller('LessonCtrl', function($scope, $stateParams, courses,chapters) {

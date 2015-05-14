@@ -1,8 +1,5 @@
 var services = angular.module('starter.services', []);
 
-
-
-
 services.factory('courses', function() {
   // Might use a resource here that returns a JSON array
 
