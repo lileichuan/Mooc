@@ -21,7 +21,7 @@ angular.module('starter.controllers', [])
     Courses.remove(chat);
   }
 })
-.controller('CourseDetailCtrl', function($scope, $stateParams, courses,chapters) {
+.controller('CourseDetailCtrl', function($scope, $stateParams,courses,chapters) {
 
   $scope.index = 1;
   $scope.course = courses.get($stateParams.courseId);
@@ -34,8 +34,18 @@ angular.module('starter.controllers', [])
 
 
 })
-.controller('LessonCtrl', function($scope, $stateParams, courses,chapters) {
-   $scope.tabItems = [{title:'概述'},{title:'资源'}];
+.controller('LessonCtrl', function($scope, $stateParams,$sce,user) {
+  $scope.user = user.get();
+  if (user.role === 0) {
+    console.log('0');
+  }
+  else{
+     console.log('1');
+  };
 
+   $scope.tabItems = [{title:'概述'},{title:'资源'}];
+   $scope.lesson = {id:'1',outline:'http://www.baidu.com',homework:'http://www.baidu.com',quiz:'http://www.baidu.com',discuss:'http://www.baidu.com',comment:'http://www.baidu.com',note:'http://www.baidu.com'};
+   $scope.outlineUrl = $sce.trustAsResourceUrl($scope.lesson.outline);
+   console.log($scope.outlineUrl);
 })
 

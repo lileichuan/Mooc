@@ -31,10 +31,8 @@
     <div class=" padding-top padding-bottom" ng-repeat = "chapter in chapters">
           <h2 class= "padding-bottom">{{chapter.name}}</h2>
           <ion-scroll  direction= "x" scrollbar-x ="false">
-          <a class="button lesson-button" ng-repeat = "lesson in chapter.lessons" ng-href="#/tab">{{lesson.name}}</a>
+          <a class="button lesson-button" ng-repeat = "lesson in chapter.lessons" ng-href="#/lesson/{{lesson.id}}">{{lesson.name}}</a>
           </ion-scroll>
-    </div>
-
   </div>
   </ion-content>
 </ion-view>

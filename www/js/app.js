@@ -25,9 +25,9 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services','st
   // Each state's controller can be found in controllers.js
   $stateProvider
   // setup an abstract state for the tabs directive
-  .state('tab', {
-    url: "/tab",
-    templateUrl: "templates/tabs.html",
+  .state('lesson', {
+    url: "/lesson/:lessonId",
+    templateUrl: "templates/lesson.html",
     controller: 'LessonCtrl'
   })
   .state('courses', {
@@ -39,20 +39,6 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services','st
       url: '/courses/:courseId',
       templateUrl: 'templates/course-detail.html',
       controller: 'CourseDetailCtrl'
-    })
-  .state('lesson', {
-      url: '/lesson/:lessonId',
-      templateUrl: 'templates/tabs.html',
-      controller: 'LessonCtrl'
-    })
-   .state('tab.outline', {
-      url: '/outline',
-      views: {
-        'tab-outline': {
-          templateUrl: 'templates/lesson-outline.html',
-          controller: 'LessonCtrl'
-        }
-      }
     })
   // Each tab has its own nav history stack:
   // if none of the above states are matched, use this as the fallback

@@ -1,5 +1,19 @@
 var services = angular.module('starter.services', []);
 
+services.factory('user', function() {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+   var user = {id:'1',name:'李雷川',sex:'0',role:'1'};
+
+  return {
+
+    get: function() {
+       return user;
+    }
+  };
+});
+
 services.factory('courses', function() {
   // Might use a resource here that returns a JSON array
 
