@@ -104,8 +104,6 @@ services.factory('chapters', function() {
   };
 });
 
-
-
 services.service('moocService', function($http, $q){
   var baseUrl = 'http://42.62.16.168:88/api?method=clientActive&client_type=1&client_renew_type=1&udid=OpenUDIDcom.founder.Class_9363f9ec20c0f440691cfd09b4ec7da776624c5a';
   var _finalUrl = '';

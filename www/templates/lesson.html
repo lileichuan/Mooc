@@ -10,8 +10,6 @@ navigation history that also transitions its views in and out.
 
   <ion-tab title="概述" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" >
   <ion-view>
-  <p>fff</p>
-  <p>fff</p>
 
    <ion-content scroll="true" overflow-scroll="true"  class="padding iframe-wrapper">
      <p>{{outline}}</p>
@@ -21,7 +19,12 @@ navigation history that also transitions its views in and out.
   </ion-tab>
  
    <ion-tab title="资源" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear">
-    <ion-nav-view name="tab-account"></ion-nav-view>
+         <ion-view>
+       <ion-content >
+           <resource></resource>
+       </ion-content>
+     </ion-view>
+   
   </ion-tab>
 
   <ion-tab title="作业" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear">
@@ -29,12 +32,20 @@ navigation history that also transitions its views in and out.
   </ion-tab>
 
     <ion-tab title="测验" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" >
-    <ion-nav-view name="tab-chats"></ion-nav-view>
-  </ion-tab>
+      <ion-view>
+       <ion-content >
+          <quiz class=""></quiz>
+       </ion-content>
+     </ion-view>
+    </ion-tab>
 
 
   <ion-tab title="讨论" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" >
-    <ion-nav-view name="tab-chats"></ion-nav-view>
+        <ion-view>
+       <ion-content >
+         <hello class=""></hello>  
+       </ion-content>
+     </ion-view>
   </ion-tab>
 
 

@@ -44,8 +44,28 @@ angular.module('starter.controllers', [])
   };
 
    $scope.tabItems = [{title:'概述'},{title:'资源'}];
-   $scope.lesson = {id:'1',outline:'http://www.baidu.com',homework:'http://www.baidu.com',quiz:'http://www.baidu.com',discuss:'http://www.baidu.com',comment:'http://www.baidu.com',note:'http://www.baidu.com'};
+   $scope.lesson = {
+                    id:'1',
+                    outline:'http://www.baidu.com',
+                    homework:'http://www.baidu.com',
+                    quiz:'http://www.baidu.com',
+                    discuss:'http://www.baidu.com',
+                    comment:'http://www.baidu.com',
+                    note:'http://www.baidu.com',
+                    resources:[{
+                                id: 0,
+                                name: '计算机基础教程',
+                                image: 'img/1.jpg',
+                                fileUrl:'http://172.19.42.53:8080/data/uploads/Courses/644BEAB7-A863-0DF5-6AAB-9FDE5E61526D/44968693f66091eea1dad22a2c42c708.jpg'
+                              },{
+                                id: 0,
+                                name: '计算机基础教程',
+                                image: 'img/2.jpg',
+                                fileUrl:'http://172.19.42.53:8080/data/uploads/Courses/644BEAB7-A863-0DF5-6AAB-9FDE5E61526D/44968693f66091eea1dad22a2c42c708.jpg'
+                              }]
+                  };
+
    $scope.outlineUrl = $sce.trustAsResourceUrl($scope.lesson.outline);
-   console.log($scope.outlineUrl);
+   console.log($scope.lesson);
 })
 

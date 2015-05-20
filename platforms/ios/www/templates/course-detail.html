@@ -4,9 +4,9 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-
-  <ion-content >
-    <div class="course-detail">
+<ion-view view-title="{{course.name}}">
+  <ion-content class="padding">
+  <div class="course-detail">
     <ion-item>
       <div  class="course-detail-left padding-right">
          <img  ng-src="{{course.image}}" style="width:590px; height:300px"> 
@@ -23,20 +23,20 @@
     </div>
   </ion-item>
   </div>
-
   <ul class="course-nav">
     <li  ng-repeat ="item in navItems" ng-class= "{active:index === item.index}"  ng-click="goPage({{item.index}})">{{item.title}}</li>
   </ul>
-  <div ng-if = "index === 0">我是简介</div>
-  <div class=" padding-top" ng-if = "index === 1">
-              <ion-item  ng-repeat = "chapter in chapters">
-                 <h2 class= "padding-bottom">{{chapter.name}}</h2>
-                   <ion-scroll  direction= "x" scrollbar-x ="false">
-                   <a class="button lesson-button" ng-repeat = "lesson in chapter.lessons" ng-href="#/lesson/{{lesson.id}}">{{lesson.name}}</a>
-                 </ion-scroll>
-            </ion-item>  
+  <div class ="padding-top" ng-if = "index === 0">我是简介</div>
+  <div  class ="padding-top" ng-if = "index === 1" >
+    <div class=" padding-top padding-bottom" ng-repeat = "chapter in chapters">
+          <h2 class= "padding-bottom">{{chapter.name}}</h2>
+          <ion-scroll  direction= "x" scrollbar-x ="false">
+          <a class="button lesson-button" ng-repeat = "lesson in chapter.lessons" ng-href="#/lesson/{{lesson.id}}">{{lesson.name}}</a>
+          </ion-scroll>
   </div>
   </ion-content>
+</ion-view>
+
 
       
  

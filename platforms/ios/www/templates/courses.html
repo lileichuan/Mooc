@@ -4,8 +4,9 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-  <ion-content>
-  <div class="padding-left padding-right padding-top pading-bottom"  collection-repeat="course in courses"     collection-item-width="'25%'"
+<ion-view view-title="我的课程">
+  <ion-content class="padding">
+  <div class="padding-left padding-right padding-top pading-bottom"  collection-repeat="course in courses" collection-item-width="'25%'"
     collection-item-height="getItemHeight(course, $index)"
     ng-style="{height: getItemHeight(course, $index)}">
    <a class="item item-thumbnail-top my-course-item"
@@ -16,5 +17,5 @@
       <p>{{course.studytime}}</p>
   </a>
   </div>
-  </ion-content>
-
+</ion-content>
+</ion-view>
