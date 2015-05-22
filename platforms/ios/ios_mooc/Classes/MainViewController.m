@@ -100,10 +100,7 @@
 */
 
 #pragma mark UIWebDelegate implementation
--(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    NSLog(@"url is:%@",[request.URL absoluteString]);
-    return YES;
-}
+
 - (void)webViewDidFinishLoad:(UIWebView*)theWebView
 {
     // Black base color for background matches the native apps

@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'starter.controllers','starter.services','starter.directives'])
+angular.module('starter', ['ionic','ngCordova','starter.controllers','starter.services','starter.directives'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -11,7 +11,16 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services','st
     // for form inputs)
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                       alert('keyboard');
+                          console.log('开始Keyboard');
     }
+                       if(window.cordova && window.cordova.plugins.AppVersionPlugin) {
+                       cordova.plugins.AppVersionPlugin.getAppVersion().then(success, error);
+                       console.log('开始cordova');
+                       }
+                       
+                       
+                       
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }

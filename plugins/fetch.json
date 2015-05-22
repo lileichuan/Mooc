@@ -24,5 +24,38 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "uk.co.whiteoctober.cordova.appversion": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/whiteoctober/cordova-plugin-app-version.git",
+            "subdir": "."
+        }
+    },
+    "de.appplant.cordova.plugin.badge": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/katzer/cordova-plugin-badge.git",
+            "subdir": "."
+        }
+    },
+    "de.appplant.cordova.common.registerusernotificationsettings": {
+        "source": {
+            "type": "registry",
+            "id": "de.appplant.cordova.common.registerusernotificationsettings"
+        }
+    },
+    "org.apache.cordova.file": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.file"
+        }
+    },
+    "nl.x-services.plugins.actionsheet": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/EddyVerbruggen/cordova-plugin-actionsheet.git",
+            "subdir": "."
+        }
     }
 }

@@ -1,7 +1,12 @@
 angular.module('starter.controllers', [])
-.controller('CoursesCtrl', function($scope, courses,moocService) {
+.controller('CoursesCtrl', function($scope,$ionicPlatform,courses,moocService) {
+
   $scope.courses = courses.all();
     console.log('开始');
+//            $ionicPlatform.ready(function() {
+//                                  console.log('开始1111');
+//                                 $AppVersionPlugin.getAppVersion().then(success, error);
+//                                 });
     /*
     moocService.clientActive()
     .then(function(data){
@@ -61,7 +66,7 @@ angular.module('starter.controllers', [])
                                 id: 0,
                                 name: '计算机基础教程',
                                 image: 'img/2.jpg',
-                                 fileUrl:'http://172.19.42.53:8080/data/uploads/Courses/644BEAB7-A863-0DF5-6AAB-9FDE5E61526D/44968693f66091eea1dad22a2c42c708.jpg'
+                                fileUrl:'http://172.19.42.53:8080/data/uploads/Courses/644BEAB7-A863-0DF5-6AAB-9FDE5E61526D/44968693f66091eea1dad22a2c42c708.jpg'
                               }]
                   };
 

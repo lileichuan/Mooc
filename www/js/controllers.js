@@ -1,7 +1,12 @@
 angular.module('starter.controllers', [])
-.controller('CoursesCtrl', function($scope, courses,moocService) {
+.controller('CoursesCtrl', function($scope,$ionicPlatform,courses,moocService) {
+
   $scope.courses = courses.all();
     console.log('开始');
+//            $ionicPlatform.ready(function() {
+//                                  console.log('开始1111');
+//                                 $AppVersionPlugin.getAppVersion().then(success, error);
+//                                 });
     /*
     moocService.clientActive()
     .then(function(data){
