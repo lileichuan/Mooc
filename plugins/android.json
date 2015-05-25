@@ -35,6 +35,10 @@
                         {
                             "xml": "<feature name=\"ActionSheet\"><param name=\"android-package\" value=\"nl.xservices.plugins.actionsheet.ActionSheet\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SQLitePlugin\"><param name=\"android-package\" value=\"io.liteglue.SQLitePlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -83,6 +87,9 @@
             "PACKAGE_NAME": "com.ionicframework.iosmooc758720"
         },
         "nl.x-services.plugins.actionsheet": {
+            "PACKAGE_NAME": "com.ionicframework.iosmooc758720"
+        },
+        "io.litehelpers.cordova.sqlite": {
             "PACKAGE_NAME": "com.ionicframework.iosmooc758720"
         }
     },

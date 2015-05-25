@@ -14,12 +14,6 @@ angular.module('starter', ['ionic','ngCordova','starter.controllers','starter.se
                        alert('keyboard');
                           console.log('开始Keyboard');
     }
-                       if(window.cordova && window.cordova.plugins.AppVersionPlugin) {
-                       cordova.plugins.AppVersionPlugin.getAppVersion().then(success, error);
-                       console.log('开始cordova');
-                       }
-                       
-                       
                        
     if(window.StatusBar) {
       StatusBar.styleDefault();

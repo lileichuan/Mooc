@@ -1,12 +1,9 @@
 angular.module('starter.controllers', [])
-.controller('CoursesCtrl', function($scope,$ionicPlatform,courses,moocService) {
+.controller('CoursesCtrl', function($scope,$ionicPlatform,$cordovaSQLite,courses,moocService) {
 
   $scope.courses = courses.all();
-    console.log('开始');
-//            $ionicPlatform.ready(function() {
-//                                  console.log('开始1111');
-//                                 $AppVersionPlugin.getAppVersion().then(success, error);
-//                                 });
+              console.log('开始');
+
     /*
     moocService.clientActive()
     .then(function(data){
@@ -15,16 +12,44 @@ angular.module('starter.controllers', [])
         console.log('结束');
       })
 */
+            $scope.downloadFile = function () {
+            $ionicPlatform.ready(function() {
+                                 alert('download');
+                                 var db = $cordovaSQLite.openDB({ name: "my.db", bgType: 1 });
+                                 
+                                 $scope.execute = function() {
+                                 var query = "INSERT INTO test_table (data, data_num) VALUES (?,?)";
+                                 $cordovaSQLite.execute(db, query, ["test", 100]).then(function(res) {
+                                                                                       console.log("insertId: " + res.insertId);
+                                                                                       }, function (err) {
+                                                                                       console.error(err);
+                                                                                       });
+                                 };
+                                 });
+
+            };
+            $scope.downloadFile();
   $scope.getItemHeight = function(item, index) {
     //使索引项平均都有10px高，例如
     return 280;
   };
   $scope.remove = function(course) {
     Courses.remove(chat);
-  }
+  };
   $scope.gotoCourseDetail = function(courseId) {
     Courses.remove(chat);
-  }
+  };
+  $scope.doRefresh = function() {
+    $http.get('/new-items')
+     .success(function(newItems) {
+       $scope.items = newItems;
+     })
+     .finally(function() {
+       // Stop the ion-refresher from spinning
+       $scope.$broadcast('scroll.refreshComplete');
+     });
+  };
+
 })
 .controller('CourseDetailCtrl', function($scope, $stateParams,courses,chapters) {
 

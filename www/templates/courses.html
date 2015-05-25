@@ -6,6 +6,10 @@
 -->
 <ion-view view-title="我的课程">
   <ion-content class="padding">
+   <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+  </ion-refresher>
   <div class="padding-left padding-right padding-top pading-bottom"  collection-repeat="course in courses" collection-item-width="'25%'"
     collection-item-height="getItemHeight(course, $index)"
     ng-style="{height: getItemHeight(course, $index)}">
@@ -17,5 +21,6 @@
       <p>{{course.studytime}}</p>
   </a>
   </div>
+  <ion-infinite-scroll on-infinite="loadMore()" distance="5%"></ion-infinite-scroll>
 </ion-content>
 </ion-view>
