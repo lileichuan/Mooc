@@ -11,8 +11,8 @@ angular.module('starter', ['ionic','ngCordova','starter.controllers','starter.se
     // for form inputs)
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-                       alert('keyboard');
-                          console.log('开始Keyboard');
+                       
+                       
     }
                        
     if(window.StatusBar) {
@@ -28,6 +28,11 @@ angular.module('starter', ['ionic','ngCordova','starter.controllers','starter.se
   // Each state's controller can be found in controllers.js
   $stateProvider
   // setup an abstract state for the tabs directive
+  .state('login', {
+    url: "/login",
+    templateUrl: "templates/login.html",
+    controller: 'LoginCtrl'
+  })
   .state('lesson', {
     url: "/lesson/:lessonId",
     templateUrl: "templates/lesson.html",
@@ -45,5 +50,5 @@ angular.module('starter', ['ionic','ngCordova','starter.controllers','starter.se
     })
   // Each tab has its own nav history stack:
   // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/courses');
+    $urlRouterProvider.otherwise('/login');
 }); 

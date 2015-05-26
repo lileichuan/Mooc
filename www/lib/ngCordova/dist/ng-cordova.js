@@ -6411,6 +6411,7 @@ angular.module('ngCordova.plugins.sqlite', [])
 
     return {
       openDB: function (dbName, background) {
+                              alert('openDB');
 
         if (typeof background === 'undefined') {
           background = 0;
@@ -6423,6 +6424,7 @@ angular.module('ngCordova.plugins.sqlite', [])
       },
 
       execute: function (db, query, binding) {
+                              alert('excute');
         var q = $q.defer();
         db.transaction(function (tx) {
           tx.executeSql(query, binding, function (tx, result) {

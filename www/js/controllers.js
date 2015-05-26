@@ -1,37 +1,50 @@
 angular.module('starter.controllers', [])
-.controller('CoursesCtrl', function($scope,$ionicPlatform,$cordovaSQLite,courses,moocService) {
 
+.controller('LoginCtrl', function($scope,$state) {
+  $scope.signIn = function(user) {
+    console.log('Sign-In', user);
+    $state.go('courses');
+  };
+})
+
+
+.controller('CoursesCtrl', function($scope,$ionicPlatform,$rootScope,courses,moocService) {
   $scope.courses = courses.all();
               console.log('开始');
 
+            
+      
     /*
     moocService.clientActive()
     .then(function(data){
         console.log(data);
-      }, function(data){
+      }, function(data){5
+
         console.log('结束');
       })
 */
-            $scope.downloadFile = function () {
-            $ionicPlatform.ready(function() {
-                                  console.log('开始download');
-                                 var db = $cordovaSQLite.openDB({ name: "my.db", bgType: 1 });
-                                 
-                                 $scope.execute = function() {
-                                 var query = "INSERT INTO test_table (data, data_num) VALUES (?,?)";
-                                 if(db){
-                                 console.log('开始download111');
-                                 }
-                                 $cordovaSQLite.execute(db, query, ["test", 100]).then(function(res) {
-                                                                                       console.log("insertId: " + res.insertId);
-                                                                                       }, function (err) {
-                                                                                       console.error(err);
-                                                                                       });
-                                 };
-                                 });
-
-            };
-            $scope.downloadFile();
+            
+//            $scope.downloadFile = function () {
+//            $ionicPlatform.ready(function() {
+//                                  console.log('开始download');
+//                                 var db = $cordovaSQLite.openDB({ name: "my.db", bgType: 1 });
+//                                 
+//                                 $scope.execute = function() {
+//                                 var query = "INSERT INTO test_table (data, data_num) VALUES (?,?)";
+//                                 if(db){
+//                                 console.log('开始download111');
+//                                 }
+//                                 $cordovaSQLite.execute(db, query, ["test", 100]).then(function(res) {
+//                                                                                       console.log("insertId: " + res.insertId);
+//                                                                                       }, function (err) {
+//                                                                                       console.error(err);
+//                                                                                       });
+//                                 };
+//                                 });
+//
+//            };
+//            $scope.downloadFile();
+            
   $scope.getItemHeight = function(item, index) {
     //使索引项平均都有10px高，例如
     return 280;

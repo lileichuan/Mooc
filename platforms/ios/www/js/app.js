@@ -11,8 +11,8 @@ angular.module('starter', ['ionic','ngCordova','starter.controllers','starter.se
     // for form inputs)
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-                       alert('keyboard');
-                          console.log('开始Keyboard');
+                       
+                       
     }
                        
     if(window.StatusBar) {
