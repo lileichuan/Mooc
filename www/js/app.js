@@ -28,11 +28,11 @@ angular.module('starter', ['ionic','ngCordova','starter.controllers','starter.se
   // Each state's controller can be found in controllers.js
   $stateProvider
   // setup an abstract state for the tabs directive
-  .state('login', {
-    url: "/login",
-    templateUrl: "templates/login.html",
-    controller: 'LoginCtrl'
-  })
+    .state('signin', {
+      url: '/sign-in',
+      templateUrl: 'templates/sign-in.html',
+      controller: 'SignInCtrl'
+    })
   .state('lesson', {
     url: "/lesson/:lessonId",
     templateUrl: "templates/lesson.html",
@@ -50,5 +50,5 @@ angular.module('starter', ['ionic','ngCordova','starter.controllers','starter.se
     })
   // Each tab has its own nav history stack:
   // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/sign-in');
 }); 

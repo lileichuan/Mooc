@@ -3,7 +3,7 @@ angular.module('ionicApp', ['ionic'])
 .config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-    .state('signin', {
+    .state('signIn', {
       url: '/sign-in',
       templateUrl: 'templates/sign-in.html',
       controller: 'SignInCtrl'

@@ -1,8 +1,18 @@
 angular.module('starter.controllers', [])
 
-.controller('LoginCtrl', function($scope,$state) {
+.controller('SignInCtrl', function($scope,$rootScope,$state,moocService) {
+   $rootScope.user = {
+        username:'lileichuan',
+        password:'1111'
+   };
   $scope.signIn = function(user) {
-    console.log('Sign-In', user);
+  console.log('Sign-In', user);
+    moocService.signIn(user)
+    .then(function(data){
+        console.log(data);
+      }, function(data){5
+        console.log('结束');
+      })
     $state.go('courses');
   };
 })
@@ -44,7 +54,8 @@ angular.module('starter.controllers', [])
 //
 //            };
 //            $scope.downloadFile();
-            
+
+
   $scope.getItemHeight = function(item, index) {
     //使索引项平均都有10px高，例如
     return 280;

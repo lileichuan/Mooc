@@ -4,7 +4,12 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="我的课程">
+<ion-view  view-title="我的课程">
+      <ion-nav-buttons side="left">
+        <a class="button"  ng-href="#/sign-in">
+          注销
+        </a>
+      </ion-nav-buttons>
   <ion-content class="padding">
    <ion-refresher
     pulling-text="Pull to refresh..."
