@@ -1,27 +1,69 @@
 angular.module('starter.controllers', [])
 
-.controller('SignInCtrl', function($scope,$rootScope,$state,moocService) {
-   $rootScope.user = {
-        username:'lileichuan',
-        password:'1111'
-   };
+.controller('SignInCtrl', function($scope,$rootScope,$ionicPlatform,$state,$cordovaSQLite,userService,moocService) {
+
+ $rootScope.user = userService.get();
   $scope.signIn = function(user) {
   console.log('Sign-In', user);
     moocService.signIn(user)
     .then(function(data){
-        console.log(data);
-      }, function(data){5
-        console.log('结束');
+        console.log('返回成功' + eval(data).success);
+          if(eval(data).success === 1){
+            $rootScope.user = eval(data).data
+                 $state.go('courses');
+          
+          }
+          else{
+            alert(eval(data).message);
+          }
+ 
+      }, function(data){
+        console.log('返回失败' + data);
       })
-    $state.go('courses');
+
   };
+//            $scope.openDB = function(){
+//            $ionicPlatform.ready(function() {
+//                                 console.log('ionicPlatform.ready');
+//                                 var db = $cordovaSQLite.openDB({ name: "my.db" });
+//                                 
+//                                 // for opening a background db:
+//                                 var db = $cordovaSQLite.openDB({ name: "my.db", bgType: 1 });
+//                                 
+//                                 $scope.execute = function() {
+//                                 var query = "INSERT INTO test_table (data, data_num) VALUES (?,?)";
+//                                 $cordovaSQLite.execute(db, query, ["test", 100]).then(function(res) {
+//                                                                                       console.log("insertId: " + res.insertId);
+//                                                                                       }, function (err) {
+//                                                                                       console.error(err);
+//                                                                                       });
+//                                 };
+//                                 });
+//            };
+//            $scope.openDB();
+
 })
 
 
 .controller('CoursesCtrl', function($scope,$ionicPlatform,$rootScope,courses,moocService) {
-  $scope.courses = courses.all();
-              console.log('开始');
-
+ // $scope.courses = courses.all();
+            console.log('开始请求课程列表');
+            alert($rootScope.user.id);
+            moocService.courseList($rootScope.user)
+            .then(function(data){
+                  console.log('返回成功' + eval(data).success);
+                  if(eval(data).success === 1){
+                  $scope.courses  =eval(data).data;
+                  
+                  }
+                  else{
+                  alert(eval(data).message);
+                  }
+                  
+                  }, function(data){
+                  console.log('返回失败' + data);
+                  })
+            //moocService.courseList();
             
       
     /*
@@ -81,6 +123,20 @@ angular.module('starter.controllers', [])
 .controller('CourseDetailCtrl', function($scope, $stateParams,courses,chapters) {
 
   $scope.index = 1;
+//  $scope.course = courses.get($stateParams.courseId);
+            moocService.CourseDetailCtrl($stateParams.courseId)
+            .then(function(data){
+                  console.log('返回成功' + eval(data).success);
+                  if(eval(data).success === 1){
+                       $scope.course  =eval(data).data;
+                  }
+                  else{
+                  alert(eval(data).message);
+                  }
+                  
+                  }, function(data){
+                  console.log('返回失败' + data);
+                  })
   $scope.course = courses.get($stateParams.courseId);
   $scope.chapters = chapters.all();
   $scope.navItems = [{title:'简介',index:0},{title:'课时',index:1}];
@@ -88,7 +144,6 @@ angular.module('starter.controllers', [])
   $scope.goPage = function(index){
      $scope.index = index;
   }
-
 
 })
 .controller('LessonCtrl', function($scope, $stateParams,$sce,user) {
