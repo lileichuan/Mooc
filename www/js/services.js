@@ -1,127 +1,63 @@
 angular.module('starter.services', [])
 
-.factory('userService', function() {
+
+.factory('deviceService', function($cordovaDevice) {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var user ={
-     username:'teacher201503',
-     password:'111111',
-            };
+  var device ;
   return {
     get: function() {
-       return user;
-    },
-    saveUser : function(user){
-    }
-  };
-})
+    document.addEventListener("deviceready", function () {
 
-.factory('deviceService', function() {
-  // Might use a resource here that returns a JSON array
+    var device = $cordovaDevice.getDevice();
 
-  // Some fake testing data
-  var device ={
-     version:'1.0',
-     udid:'lileichuan111fffffffff',
-            };
-  return {
-    get: function() {
+    var cordova = $cordovaDevice.getCordova();
+
+    var model = $cordovaDevice.getModel();
+
+    var platform = $cordovaDevice.getPlatform();
+
+    var uuid = $cordovaDevice.getUUID();
+
+    var version = $cordovaDevice.getVersion();
+    alert('version is'+ version);
+   }, false);
        return device;
     }
   };
 })
 
-.factory('courses', function() {
-  // Might use a resource here that returns a JSON array
 
-  // Some fake testing data
-  var courses = [{
-    id: 0,
-    name: '计算机基础教程',
-    studynum: '选课人数:10',
-    studytime: '开课时间:2015-03-1',
-    image: 'img/1.jpg'
-  }, {
-    id: 1,
-    name: '计算机基础教程',
-    studynum: '选课人数:10',
-    studytime: '开课时间:2015-03-1',
-    image: 'img/2.jpg'
-  },{
-    id: 2,
-    name: '计算机基础教程',
-    studynum: '选课人数:10',
-    studytime: '开课时间:2015-03-1',
-    image: 'img/3.jpg'
-  }, {
-    id: 3,
-    name: '计算机基础教程',
-    studynum: '选课人数:10',
-    studytime: '开课时间:2015-03-1',
-    image: 'img/4.jpg'
-  }, {
-    id: 4,
-    name: '计算机基础教程',
-    studynum: '选课人数:10',
-    studytime: '开课时间:2015-03-1',
-    image: 'img/1.jpg'
-  }];
 
+.factory('dbService', function() {
+  var courses;
+  var lesson;
   return {
-    all: function() {
-      return courses;
+    getUser: function() {
+       return user;
     },
-    remove: function(course) {
-      courses.splice(courses.indexOf(course), 1);
+    saveUser : function(user){
     },
-    get: function(courseId) {
-      for (var i = 0; i < courses.length; i++) {
-        if (courses[i].id === parseInt(courseId)) {
-          return courses[i];
-        }
-      }
-      return null;
+    getCourses:function(){
+       return courses;
+    },
+    saveCourse:function(courses){
+
+    },
+    getCourseDetail:function(courseId){
+
+    },
+    saveCourseDetail:function(course){
+
+    },
+    getLesson:function(lessonId){
+
+    },
+    saveLesson:function(lesson){
     }
   };
 })
-
-
-.factory('chapters', function() {
-  // Might use a resource here that returns a JSON array
-  // Some fake testing data
-  var chapters = [{
-    id: 0,
-    name: '计算机基础教程',
-    lessons:[{
-      id:0,
-      name:'初中生物分支测验'},{
-      id:1,  
-      name:'生态系统分支测验'}]
-  },{
-    id: 1,
-    name: '计算机基础教程',
-    lessons:[{
-      id:0,
-      name:'初中生物分支测验'},{
-      id:1,  
-      name:'生态系统分支测验'}]
-  },{
-    id: 2,
-    name: '计算机基础教程',
-    lessons:[{
-       id:0,
-      name:'初中生物分支测验'},{
-      id:1,  
-      name:'生态系统分支测验'}]
-  }];
-  return {
-    all: function() {
-      return chapters;
-    }
-  };
-})
-
 .service('moocService', function($http, $q){
   var baseUrl = 'http://172.19.43.88:8080/api?method=';
           //var baseUrl = 'http://42.62.16.168:88/api?method=';
@@ -141,7 +77,7 @@ angular.module('starter.services', [])
       deferred.resolve(data);
     }).error(function(){
        console.log('faild');
-      deferred.reject('There was an error')
+      deferred.reject('There was an error');
     })
     return deferred.promise;
   }
