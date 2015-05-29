@@ -9,61 +9,24 @@ angular.module('starter.controllers', [])
     .then(function(data){
         console.log('返回成功' + eval(data).success);
           if(eval(data).success === 1){
-            $rootScope.user = eval(data).data
+            $rootScope.user = eval(data).data;
                  $state.go('courses');
-          
           }
           else{
             alert(eval(data).message);
           }
- 
       }, function(data){
         console.log('返回失败' + data);
       })
 
   };
-//            $scope.openDB = function(){
-//            $ionicPlatform.ready(function() {
-//                                 console.log('ionicPlatform.ready');
-//                                 var db = $cordovaSQLite.openDB({ name: "my.db" });
-//                                 
-//                                 // for opening a background db:
-//                                 var db = $cordovaSQLite.openDB({ name: "my.db", bgType: 1 });
-//                                 
-//                                 $scope.execute = function() {
-//                                 var query = "INSERT INTO test_table (data, data_num) VALUES (?,?)";
-//                                 $cordovaSQLite.execute(db, query, ["test", 100]).then(function(res) {
-//                                                                                       console.log("insertId: " + res.insertId);
-//                                                                                       }, function (err) {
-//                                                                                       console.error(err);
-//                                                                                       });
-//                                 };
-//                                 });
-//            };
-//            $scope.openDB();
-
 })
 
 
 .controller('CoursesCtrl', function($scope,$ionicPlatform,$rootScope,courses,moocService) {
  // $scope.courses = courses.all();
-            console.log('开始请求课程列表');
-            alert($rootScope.user.id);
-            moocService.courseList($rootScope.user)
-            .then(function(data){
-                  console.log('返回成功' + eval(data).success);
-                  if(eval(data).success === 1){
-                  $scope.courses  =eval(data).data;
-                  
-                  }
-                  else{
-                  alert(eval(data).message);
-                  }
-                  
-                  }, function(data){
-                  console.log('返回失败' + data);
-                  })
-            //moocService.courseList();
+    console.log('开始请求课程列表');
+    //moocService.courseList();
             
       
     /*
@@ -109,34 +72,40 @@ angular.module('starter.controllers', [])
     Courses.remove(chat);
   };
   $scope.doRefresh = function() {
-    $http.get('/new-items')
-     .success(function(newItems) {
-       $scope.items = newItems;
-     })
-     .finally(function() {
-       // Stop the ion-refresher from spinning
-       $scope.$broadcast('scroll.refreshComplete');
-     });
-  };
-
-})
-.controller('CourseDetailCtrl', function($scope, $stateParams,courses,chapters) {
-
-  $scope.index = 1;
-//  $scope.course = courses.get($stateParams.courseId);
-            moocService.CourseDetailCtrl($stateParams.courseId)
+          moocService.courseList($rootScope.user)
             .then(function(data){
                   console.log('返回成功' + eval(data).success);
                   if(eval(data).success === 1){
-                       $scope.course  =eval(data).data;
+                    $scope.courses  =eval(data).data;
+                    $scope.$broadcast('scroll.refreshComplete');
                   }
                   else{
-                  alert(eval(data).message);
+                    alert(eval(data).message);
                   }
-                  
                   }, function(data){
-                  console.log('返回失败' + data);
-                  })
+                      console.log('返回失败' + data);
+               })
+  };
+  $scope.doRefresh();
+
+})
+.controller('CourseDetailCtrl', function($scope,$stateParams,moocService,courses,chapters) {
+
+  $scope.index = 1;
+//  $scope.course = courses.get($stateParams.courseId);
+  console.log($stateParams.courseId);
+  moocService.CourseDetailCtrl($stateParams.courseId)
+    .then(function(data){
+          console.log('返回成功' + eval(data).success);
+          if(eval(data).success === 1){
+               $scope.course  =eval(data).data;
+             }
+          else{
+               alert(eval(data).message);
+            }        
+           }, function(data){
+              console.log('返回失败' + data);
+     })
   $scope.course = courses.get($stateParams.courseId);
   $scope.chapters = chapters.all();
   $scope.navItems = [{title:'简介',index:0},{title:'课时',index:1}];
@@ -154,7 +123,6 @@ angular.module('starter.controllers', [])
   else{
      console.log('1');
   };
-
    $scope.tabItems = [{title:'概述'},{title:'资源'}];
    $scope.lesson = {
                     id:'1',

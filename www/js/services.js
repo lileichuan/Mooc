@@ -125,22 +125,16 @@ angular.module('starter.services', [])
 .service('moocService', function($http, $q){
   var baseUrl = 'http://172.19.43.88:8080/api?method=';
           //var baseUrl = 'http://42.62.16.168:88/api?method=';
-  var _finalUrl = '';
   var makeUrl = function(parms){
-    _finalUrl = baseUrl + parms + '&callback=JSON_CALLBACK';
-    return _finalUrl;
+    var finalUrl = baseUrl + parms + '&callback=JSON_CALLBACK';
+    return finalUrl;
   }
-  // 用户登录
-  this.signIn = function(user,device){
-    //var parms = 'userAuth&user_name='+ user.username +'&user_pwd='+ user.password +'&udid='+'11111';
-             var parms = 'userAuth&user_name='+ user.username +'&user_pwd='+ user.password +'&udid='+'11111' +'&type=1';
-    console.log('parms is'+ parms);
-    makeUrl(parms);
-    console.log(_finalUrl);
+
+  var request = function(finalUrl){
     var deferred = $q.defer();
     $http({
       method: 'JSONP',
-      url: _finalUrl
+      url:finalUrl
     }).success(function(data){
        console.log('success');
       
@@ -151,64 +145,41 @@ angular.module('starter.services', [])
     })
     return deferred.promise;
   }
+  // 用户登录
+  this.signIn = function(user,device){
+    //var parms = 'userAuth&user_name='+ user.username +'&user_pwd='+ user.password +'&udid='+'11111';
+             var parms = 'userAuth&user_name='+ user.username +'&user_pwd='+ user.password +'&udid='+'11111' +'&type=1';
+    console.log('parms is'+ parms);
+    var finalUrl = makeUrl(parms);
+    console.log('finalUrl is' + finalUrl);
+    return request(finalUrl);
+
+  }
   // 课程列表
   this.courseList = function(user,device){
-//    var parms = 'courseList&user_Id=11A3AAE7-6DC9-06E4-CB22-F6F033C64352';
     var parms = 'courseList&user_id=' + user.id;
     console.log('courseList parms is'+ parms);
-    makeUrl(parms);
-    console.log(_finalUrl);
-    var deferred = $q.defer();
-    $http({
-      method: 'JSONP',
-      url: _finalUrl
-    }).success(function(data){
-       console.log('success');
-      deferred.resolve(data);
-    }).error(function(){
-       console.log('faild');
-      deferred.reject('There was an error')
-    })
-    return deferred.promise;
+        var finalUrl =makeUrl(parms);
+    console.log('finalUrl is' + finalUrl);
+    return request(finalUrl);
+
   }
   // 课程详情
   this.courseDetail = function(courseId){
     var parms = 'courseDetail&course_id='+courseId;
     console.log('parms is'+ parms);
-    makeUrl(parms);
-    console.log(_finalUrl);
-    var deferred = $q.defer();
-    $http({
-      method: 'JSONP',
-      url: _finalUrl
-    }).success(function(data){
-       console.log('success');
-      deferred.resolve(data);
-    }).error(function(){
-       console.log('faild');
-      deferred.reject('There was an error')
-    })
-    return deferred.promise;
+    var finalUrl =makeUrl(parms);
+    console.log('finalUrl is' + finalUrl);
+    return request(finalUrl);
   }
     //lesson详情
-    this.lessonDetail = function(lessonId){
-         var parms = 'courseDetail&course_id='+courseId;
-         console.log('parms is'+ parms);
-         makeUrl(parms);
-         console.log(_finalUrl);
-         var deferred = $q.defer();
-         $http({
-               method: 'JSONP',
-               url: _finalUrl
-               }).success(function(data){
-                          console.log('success');
-                          deferred.resolve(data);
-                          }).error(function(){
-                                   console.log('faild');
-                                   deferred.reject('There was an error')
-                                   })
-         return deferred.promise;
-         }
+  this.lessonDetail = function(lessonId){
+      var parms = 'courseDetail&course_id='+courseId;
+      console.log('parms is'+ parms);
+      var finalUrl = makeUrl(parms);
+      console.log('finalUrl is' + finalUrl);
+      return request(finalUrl);
+    }
 
 
 });
