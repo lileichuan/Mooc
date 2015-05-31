@@ -22,10 +22,11 @@ angular.module('starter', ['ionic','ngCordova','starter.controllers','starter.se
 //          // error
 //      });
                              alert('1111');
-         var db = $cordovaSQLite.openDB( "test.db",2 );
+         var db = $cordovaSQLite.openDB( "test.db",0);
                            
   alert('2222');
- cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS test_table (data text, data_num integer)");
+  $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS test_table (data text, data_num integer)",'');
+                            alert('33333');
 //  $scope.execute = function() {
 //    var query = "INSERT INTO test_table (data, data_num) VALUES (?,?)";
 //    $cordovaSQLite.execute(db, query, ["test", 100]).then(function(res) {
@@ -35,7 +36,7 @@ angular.module('starter', ['ionic','ngCordova','starter.controllers','starter.se
 //    });
 //  };
 
-      alert('33333');
+
        });
 
     if(window.cordova && window.cordova.plugins.Keyboard) {
