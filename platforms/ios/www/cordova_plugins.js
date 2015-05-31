@@ -8,6 +8,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+        "id": "cordova-sqlite-storage.SQLitePlugin",
+        "clobbers": [
+            "SQLitePlugin"
+        ]
+    },
+    {
         "file": "plugins/de.appplant.cordova.plugin.badge/www/badge.js",
         "id": "de.appplant.cordova.plugin.badge.Badge",
         "clobbers": [
@@ -209,19 +216,13 @@ module.exports = [
         "clobbers": [
             "cordova.getAppVersion"
         ]
-    },
-    {
-        "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
-        "id": "cordova-sqlite-storage.SQLitePlugin",
-        "clobbers": [
-            "SQLitePlugin"
-        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
     "com.ionic.keyboard": "1.0.4",
+    "cordova-sqlite-storage": "0.7.9",
     "de.appplant.cordova.common.registerusernotificationsettings": "1.0.1",
     "de.appplant.cordova.plugin.badge": "0.6.4",
     "nl.x-services.plugins.actionsheet": "1.1.4",
@@ -229,8 +230,7 @@ module.exports.metadata =
     "org.apache.cordova.device": "0.3.0",
     "org.apache.cordova.file": "1.3.3",
     "org.apache.cordova.file-transfer": "0.5.0",
-    "uk.co.whiteoctober.cordova.appversion": "0.1.7",
-    "cordova-sqlite-storage": "0.7.9"
+    "uk.co.whiteoctober.cordova.appversion": "0.1.7"
 }
 // BOTTOM OF METADATA
 });

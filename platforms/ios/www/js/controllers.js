@@ -1,10 +1,11 @@
 angular.module('starter.controllers', [])
 
-.controller('SignInCtrl', function($scope,$rootScope,$ionicPlatform,$state,moocService,deviceService) {
+.controller('SignInCtrl', function($scope,$rootScope,$ionicPlatform,$state,moocService) {
   $rootScope.user = {
-     username:'teacher201503',
+     username:'testls',
      password:'111111',
    };
+
   $scope.signIn = function(user) {
   console.log('Sign-In', user);
     moocService.signIn(user)
@@ -89,26 +90,37 @@ angular.module('starter.controllers', [])
   $scope.course;
   $scope.chapters;
   console.log($stateParams.courseId);
-  // moocService.courseDetail($stateParams.courseId)
-  //   .then(function(data){
-  //         console.log('返回成功' + eval(data).success);
-  //         if(eval(data).success === 1){
-  //              //$scope.course  =eval(data).data;
-  //            }else{
-  //              alert(eval(data).message);
-  //           }        
-  //          }, function(data){
-  //            console.log('返回失败' + data);
-  // })
+  moocService.courseDetail($stateParams.courseId)
+    .then(function(data){
+          console.log('返回成功' + eval(data).success);
+          if(eval(data).success === 1){
+               $scope.course  =eval(data).data;
+             }else{
+               alert(eval(data).message);
+            }        
+           }, function(data){
+             console.log('返回失败' + data);
+  })
   $scope.navItems = [{title:'简介',index:0},{title:'课时',index:1}];
   $scope.navViews = [{title:'简介',index:0},{title:'课时',index:1}];
   $scope.goPage = function(index){
      $scope.index = index;
   };
 })
-.controller('LessonCtrl', function($scope,$stateParams,user) {
-  $scope.user = user.get();
-  if (user.role === 0) {
+.controller('LessonCtrl', function($scope,$stateParams,user,moocService) {
+    moocService.lessonDetail($stateParams.lessonId)
+    .then(function(data){
+          console.log('返回成功' + eval(data).success);
+          if(eval(data).success === 1){
+               $scope.course  =eval(data).data;
+             }else{
+               alert(eval(data).message);
+            }        
+           }, function(data){
+             console.log('返回失败' + data);
+  })
+
+  if ($rootScope.user.role === 0) {
     console.log('0');
   }
   else{

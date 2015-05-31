@@ -5,10 +5,39 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic','ngCordova','starter.controllers','starter.services','starter.directives'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,deviceService,$cordovaFile,$cordovaSQLite) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+      console.log('fff');
+       $ionicPlatform.ready(function() {
+            //var device = deviceService.get();
+            console.log(device);
+//                $cordovaFile.getFreeDiskSpace()
+//      .then(function (success) {
+//         // success in kilobytes
+//            alert('success is'+success);
+//         console.log(success);
+//      }, function (error) {
+//          // error
+//      });
+                             alert('1111');
+         var db = $cordovaSQLite.openDB( "test.db",0);
+                           
+  alert('2222');
+ cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS test_table (data text, data_num integer)");
+//  $scope.execute = function() {
+//    var query = "INSERT INTO test_table (data, data_num) VALUES (?,?)";
+//    $cordovaSQLite.execute(db, query, ["test", 100]).then(function(res) {
+//      console.log("insertId: " + res.insertId);
+//    }, function (err) {
+//      console.error(err);
+//    });
+//  };
+
+      alert('33333');
+       });
+
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);         
     }              

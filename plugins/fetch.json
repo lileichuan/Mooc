@@ -9,7 +9,9 @@
         "source": {
             "type": "registry",
             "id": "org.apache.cordova.console"
-        }
+        },
+        "is_top_level": true,
+        "variables": {}
     },
     "com.ionic.keyboard": {
         "source": {

@@ -1,11 +1,11 @@
 angular.module('starter.controllers', [])
 
-.controller('SignInCtrl', function($scope,$rootScope,$ionicPlatform,$state,moocService,deviceService) {
+.controller('SignInCtrl', function($scope,$rootScope,$ionicPlatform,$state,moocService) {
   $rootScope.user = {
-     username:'teacher201503',
+     username:'testls',
      password:'111111',
    };
-  deviceService.get();
+
   $scope.signIn = function(user) {
   console.log('Sign-In', user);
     moocService.signIn(user)
@@ -107,9 +107,20 @@ angular.module('starter.controllers', [])
      $scope.index = index;
   };
 })
-.controller('LessonCtrl', function($scope,$stateParams,user) {
-  $scope.user = user.get();
-  if (user.role === 0) {
+.controller('LessonCtrl', function($scope,$stateParams,user,moocService) {
+    moocService.lessonDetail($stateParams.lessonId)
+    .then(function(data){
+          console.log('返回成功' + eval(data).success);
+          if(eval(data).success === 1){
+               $scope.course  =eval(data).data;
+             }else{
+               alert(eval(data).message);
+            }        
+           }, function(data){
+             console.log('返回失败' + data);
+  })
+
+  if ($rootScope.user.role === 0) {
     console.log('0');
   }
   else{

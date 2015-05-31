@@ -2,9 +2,6 @@ angular.module('starter.services', [])
 
 
 .factory('deviceService', function($cordovaDevice) {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
   var device ;
   return {
     get: function() {
@@ -21,6 +18,7 @@ angular.module('starter.services', [])
     var uuid = $cordovaDevice.getUUID();
 
     var version = $cordovaDevice.getVersion();
+
     alert('version is'+ version);
    }, false);
        return device;
@@ -59,7 +57,7 @@ angular.module('starter.services', [])
   };
 })
 .service('moocService', function($http, $q){
-  var baseUrl = 'http://172.19.43.88:8080/api?method=';
+  var baseUrl = 'http://42.62.16.168:8080/api?method=';
           //var baseUrl = 'http://42.62.16.168:88/api?method=';
   var makeUrl = function(parms){
     var finalUrl = baseUrl + parms + '&callback=JSON_CALLBACK';
@@ -111,7 +109,7 @@ angular.module('starter.services', [])
   }
     //lesson详情
   this.lessonDetail = function(lessonId){
-      var parms = 'courseDetail&course_id='+courseId;
+      var parms = 'getSingleCourse&course_id='+lessonId;
       console.log('parms is'+ parms);
       var finalUrl = makeUrl(parms);
       console.log('finalUrl is' + finalUrl);
